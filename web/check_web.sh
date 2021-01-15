@@ -52,7 +52,7 @@ if [ $upnet_num -ne 1 ];then
 	echo -e "Upnet官网---无法正常打开，请马上查看\n$url" >> dead.log
 fi
 if [ "$down_num" != "111" ];then
-	echo -e "下载官网---无法正常打开，请马上查看" >> dead.log
+	echo -e "下载官网---无法正常打开，请马上查看\n$url" >> dead.log
 fi
 mes=`cat dead.log`
 num=`cat dead.log|wc -l`
