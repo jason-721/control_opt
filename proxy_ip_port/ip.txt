@@ -1,0 +1,13 @@
+web-p2-bwg,65.49.144.34
+veee-api-p1-bwgHK,69.171.64.85
+veee-api-p2-80host,118.107.42.233
+upnet-api-p2,112.213.122.21
+bakcup-api-azureHK,23.98.32.113
+SZ-P-backup,120.79.176.245
+upnet-landing-p1,156.251.163.106
+upnet-landing-p2,69.171.67.225
+BWG-download-1,89.208.242.33
+BWG-download-2,67.230.168.124
+upnet-landing-p3-gigs,103.1.153.236
+upnet-landing-p5-gigs,43.251.159.77
+HK_New_API_Proxy,14.29.126.109

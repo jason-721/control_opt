@@ -1,0 +1,57 @@
+
+#!/bin/bash
+  
+> veee_status.log
+> ovse_status.log
+> upnet_status.log
+> tele.log
+> tele2.log
+#while read line
+#do
+#    sys=`echo $line|awk '{print $1}'`
+#    ip=`echo $line|awk '{print $2}'`
+#    if [ "$sys" == "pornA"  ];then
+#        nc -vz -w 2 $ip 22 &>> status.log
+#    elif [ "$sys" == "pornB"  ];then
+#        nc -vz -w 2 $ip 22 &>> status.log
+#    elif [ "$sys" == "ovse_netflixA"  ];then
+#        nc -vz -w 2 $ip 22 &>> status.log
+#    else
+#        nc -vz -w 2 $ip 11022 &>> status.log
+#    fi
+#done < ip.txt
+
+
+#for i in `cat status.log |grep -v "succeeded"|awk '{print $4}'`
+#do
+#    cat ip.txt|grep "$i" >> tele.log
+#done
+
+for  a in `cat ucloud_veee.txt`;do nc -vz -w 2 $a 11022 &>> veee_status.log;done
+wait
+for  b in `cat ucloud_ovse.txt`;do nc -vz -w 2 $b 22 &>> ovse_status.log;done
+wait
+for  c in `cat ucloud_upnet.txt`;do nc -vz -w 2 $c 11022 &>> upnet_status.log;done
+wait
+
+cat veee_status.log |grep -v "succeeded"|awk '{print $4}' >> tele.log
+cat ovse_status.log |grep -v "succeeded"|awk '{print $4}' >> tele.log
+cat upnet_status.log |grep -v "succeeded"|awk '{print $4}' >> tele.log
+
+data_info=`cat tele.log |xargs|sed 's/ /,/'g`
+curl "http://make.edgeeee.com/Vps/banIp1?p=79a244366c2352df43beed7ae9c440bc&data=$data_info" &> /dev/null
+
+exit
+echo -e "国外通，国内不通的IP：" >> tele2.log
+for i in `cat tele.log |grep -v "IP"`;do cat label.txt |grep -w "$i";done >> tele2.log
+node_num=`cat tele2.log |grep "Node"|wc -l`
+ovse_num=`cat tele2.log |grep "Ovse"|wc -l`
+upnet_num=`cat tele2.log |grep "Upnet"|wc -l`
+sed -i "1a\Veee国内不通的数量： $node_num 台" tele2.log
+sed -i "2a\中转国内不通的数量： $ovse_num 台" tele2.log
+sed -i "3a\Upnet国内不通的数量： $upnet_num 台" tele2.log
+tele_num=`cat tele2.log|wc -l`
+tele_mes=`cat tele2.log`
+if [ $tele_num -ge 2  ];then
+curl -X POST -i -k 'https://api.at0mx.com/output/sendTelegram?' --data-urlencode 'password=c958293a1173f5c3e7171dfe4cd68edf' --data-urlencode "text=${tele_mes}" --data-urlencode 'id=-262430313' &> /dev/null
+fi
