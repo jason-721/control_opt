@@ -1,5 +1,5 @@
 */3 * * * * php /home/shell/checkNode/check.php >> /home/shell/checkNode/log
-0 */2 * * * cd /opt/domain_name/ && bash check_domain.sh
+#0 */2 * * * cd /opt/domain_name/ && bash check_domain.sh
 #*/5 * * * * bash /home/shell/checkNode/checkk.sh
 */2 * * * * php /home/shell/checkWeb/check.php > /dev/null
 */2 * * * * php /opt/checkWeb/check.php > /dev/null
@@ -11,7 +11,6 @@
 */5 * * * * cd /opt/proxy_ip_port && bash /opt/proxy_ip_port/check.sh
 */2 7-23 * * * cd /opt/ssh/ && bash check_ssh.sh
 #*/5 * * * * cd /mnt/web/ && bash /mnt/web/check.sh
-1 */5 * * * cd /mnt/ && bash 2.sh
-*/5 * * * *  bash /opt/ifconfig_count_flow.sh
+#1 */5 * * * cd /mnt/ && bash 2.sh
 */30 7-23 * * *  cd /opt/web && bash check_invitation_web.sh &> /dev/null
-
+*/5 * * * *  bash /opt/ifconfig_count_flow.sh
