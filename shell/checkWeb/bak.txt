@@ -1,0 +1,9 @@
+https://cdn.kisslucky.com:9527/output/test,cdn.kisslucky.com
+https://cdn.tapdb-dev.com:9527/output/test,cdn.tapdb-dev.com
+https://cdn.taptap123.com:9527/output/test,cdn.taptap123.com
+https://cdn.vapi.atomx.us/api.php,cdn.vapi.atomx.us
+https://napi.atomx.us/api.php,napi.atomx.us
+https://api.at0mx.com/output/test,api.at0mx.com
+https://cdn.upppppp.com:9527/output/test,cdn.upppppp.com
+https://cdn.upnetapi.com:9527/output/test,cdn.upnetapi.com
+https://6137fe.com/output/test,6137fe.com
